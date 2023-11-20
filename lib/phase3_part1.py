@@ -17,3 +17,32 @@ class MusicLibrary:
 
     def search(self, keyword):
         return [track for track in self.tracks if track.matches(keyword)]
+    
+##############################
+
+class Task:
+    def __init__(self, title):
+        self.title = title
+        self.complete = False
+
+    def mark_complete(self):
+        self.complete = True
+
+    def is_complete(self):
+        return self.complete
+    
+    
+class TaskList:
+    def __init__(self):
+        self.tasks = []
+
+    def add(self, task):
+        self.tasks.append(task)
+
+    def all(self):
+        return self.tasks
+
+    def all_complete(self):
+        if len(self.tasks) == 0:
+            return False
+        return all([task.is_complete() for task in self.tasks])

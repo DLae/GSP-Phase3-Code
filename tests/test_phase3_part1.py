@@ -1,5 +1,7 @@
-from lib.phase3_part1 import *
+from unittest import mock
 import unittest
+from lib.phase3_part1 import Track, MusicLibrary
+from lib.phase3_part1 import Task, TaskList
 
 class TestTrack(unittest.TestCase):
     def test_track_creation(self):
@@ -41,6 +43,52 @@ class TestMusicLibrary(unittest.TestCase):
         self.assertEqual(len(results), 1)
         self.assertIn(track2, results)
         self.assertNotIn(track1, results)
+
+def test_adds_tasks_to_list():
+    task_list = TaskList()
+    task_1 = Task("Walk the dog")
+    task_2 = Task("Walk the cat")
+    task_list.add(task_1)
+    task_list.add(task_2)
+    assert task_list.tasks == [task_1, task_2]
+
+def test_marks_tasks_as_complete():
+    task_list = TaskList()
+    task_1 = Task("Walk the dog")
+    task_2 = Task("Walk the cat")
+    task_list.add(task_1)
+    task_list.add(task_2)
+    task_1.mark_complete()
+    task_2.mark_complete()
+    assert task_list.all_complete() == True
+
+
+def test_constructs():
+    task = Task("Walk the dog")
+    assert task.title == "Walk the dog"
+
+def test_can_be_marked_as_complete():
+    task = Task("Walk the dog")
+    task.mark_complete()
+    assert task.is_complete() == True
+
+
+def test_task_list_initially_empty():
+    task_list = TaskList()
+    assert task_list.tasks == []
+
+def test_tasks_initially_not_all_complete():
+    task_list = TaskList()
+    assert task_list.all_complete() == False
+
+# Unit test `#tasks` and `#all_complete` behaviour
+def test_tasks_initially_all_complete():
+    task_list = TaskList()
+    task_list.add("Wash Car")
+    
+    fake_task_mark_complete = mock()
+    fake_task_mark_complete = []
+    
 
 if __name__ == '__main__':
     unittest.main()
