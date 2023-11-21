@@ -1,6 +1,6 @@
 from lib.phase3_part3 import *
 import unittest
-from unittest import mock
+from unittest.mock import Mock
 
 class TestDiary(unittest.TestCase):
     def test_diary_read(self):

@@ -51,7 +51,7 @@ class TaskList:
     
 class TaskFormatter:
     def __init__(self, task): # task is an instance of Task
-        pass
+        self.task = task
 
     def format(self):
         # Returns the task formatted as a string.
@@ -59,4 +59,7 @@ class TaskFormatter:
         # - [ ] Task title
         # If the task is complete, the format is:
         # - [x] Task title
-        pass
+        
+        x = "x" if self.task.is_complete() else " "
+        
+        return f"- [{x}] {self.task.title}"
