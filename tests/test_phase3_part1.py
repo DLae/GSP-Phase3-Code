@@ -81,14 +81,6 @@ def test_tasks_initially_not_all_complete():
     task_list = TaskList()
     assert task_list.all_complete() == False
 
-# Unit test `#tasks` and `#all_complete` behaviour
-def test_tasks_initially_all_complete():
-    task_list = TaskList()
-    task_list.add("Wash Car")
-    
-    fake_task_mark_complete = mock()
-    fake_task_mark_complete = []
-    
 
 if __name__ == '__main__':
     unittest.main()
